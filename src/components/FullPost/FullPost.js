@@ -12,15 +12,10 @@ class FullPost extends Component {
         !this.state.loadedPost ||
         this.props.selectedId !== this.state.loadedPost.id
       ) {
-        axios
-          .get(
-            "https://jsonplaceholder.typicode.com/posts/" +
-              this.props.selectedId
-          )
-          .then(response => {
-            this.setState({ loadedPost: response.data });
-            console.log(response);
-          });
+        axios.get("/posts/" + this.props.selectedId).then(response => {
+          this.setState({ loadedPost: response.data });
+          console.log(response);
+        });
       }
     }
   }
