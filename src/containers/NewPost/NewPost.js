@@ -8,6 +8,9 @@ class NewPost extends Component {
     content: "",
     author: "Max"
   };
+  componentDidMount() {
+    console.log(this.props);
+  }
   postHandler = () => {
     const post = {
       title: this.state.title,

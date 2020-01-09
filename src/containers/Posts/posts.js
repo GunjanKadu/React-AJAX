@@ -8,6 +8,7 @@ class Posts extends Component {
     posts: []
   };
   componentDidMount() {
+    console.log(this.props);
     axios
       .get("/posts")
       .then(response => {
@@ -36,6 +37,8 @@ class Posts extends Component {
       post = this.state.posts.map(post => {
         return (
           <Post
+            // passing router props to components in lower heierarchy
+            //match={this.props.match}
             key={post.id}
             title={post.title}
             author={post.author}
