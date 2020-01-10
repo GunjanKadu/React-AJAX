@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./Blog.css";
-import Post from "../Posts/posts";
+import Posts from "../Posts/posts";
 import Newpost from "../NewPost/NewPost";
 import { Route, Link } from "react-router-dom";
-
+import FullPost from "../FullPost/FullPost";
 class Blog extends Component {
   render() {
     return (
@@ -28,8 +28,9 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Route path="/" exact component={Post} />
+        <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={Newpost} />
+        <Route path="/:postId" component={FullPost} />
       </div>
     );
   }
