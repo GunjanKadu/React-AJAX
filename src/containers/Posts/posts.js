@@ -36,7 +36,7 @@ class Posts extends Component {
     if (!this.state.error) {
       post = this.state.posts.map(post => {
         return (
-          <Link to={"/" + post.id} key={post.id}>
+          <Link to={"/FullPost/" + post.id} key={post.id}>
             <Post
               // passing router props to components in lower heierarchy
               //match={this.props.match}
