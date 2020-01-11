@@ -7,6 +7,8 @@ import FullPost from "../FullPost/FullPost";
 
 class Blog extends Component {
   render() {
+    console.log("Blog Component");
+    console.log(this.props);
     return (
       <div className="Blog">
         <header>
@@ -29,10 +31,10 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        <Route path="/" exact component={Posts} />
         <Switch>
+          <Route path="/" component={Posts} />
           <Route path="/new-post" component={Newpost} />
-          <Route path="/FullPost/:postId" component={FullPost} />
+          {/* <Route path="/FullPost/:postId" component={FullPost} /> */}
         </Switch>
       </div>
     );

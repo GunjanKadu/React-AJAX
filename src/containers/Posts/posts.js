@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "../../axios";
 import Post from "../../components/Post/Post";
 import "./posts.css";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import FullPost from "../FullPost/FullPost";
 
 class Posts extends Component {
   state = {
@@ -10,6 +11,7 @@ class Posts extends Component {
     selectedPostId: null
   };
   componentDidMount() {
+    console.log("Posts Component");
     console.log(this.props);
     axios
       .get("/posts")
@@ -50,7 +52,16 @@ class Posts extends Component {
         );
       });
     }
-    return <section className="Posts">{post}</section>;
+    return (
+      <div>
+        <section className="Posts">{post}</section>
+        <Route
+          path={this.props.match.url + "FullPost/:postId"}
+          exact
+          component={FullPost}
+        />
+      </div>
+    );
   }
 }
 
