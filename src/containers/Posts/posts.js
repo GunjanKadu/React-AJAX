@@ -3,9 +3,11 @@ import axios from "../../axios";
 import Post from "../../components/Post/Post";
 import "./posts.css";
 import { Link } from "react-router-dom";
+
 class Posts extends Component {
   state = {
-    posts: []
+    posts: [],
+    selectedPostId: null
   };
   componentDidMount() {
     console.log(this.props);
@@ -27,7 +29,8 @@ class Posts extends Component {
   }
 
   postSelectHandler = id => {
-    this.setState({ selectedPostId: id });
+    // this.setState({ selectedPostId: id });
+    this.props.history.push({ pathname: "/FullPost/" + id });
   };
 
   render() {
@@ -36,15 +39,14 @@ class Posts extends Component {
     if (!this.state.error) {
       post = this.state.posts.map(post => {
         return (
-          <Link to={"/FullPost/" + post.id} key={post.id}>
-            <Post
-              // passing router props to components in lower heierarchy
-              //match={this.props.match}
-              title={post.title}
-              author={post.author}
-              click={() => this.postSelectHandler(post.id)}
-            />
-          </Link>
+          // <Link to={"/FullPost/" + post.id} key={post.id}>
+          <Post
+            key={post.id}
+            title={post.title}
+            author={post.author}
+            click={() => this.postSelectHandler(post.id)}
+          />
+          // </Link>
         );
       });
     }
